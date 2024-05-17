@@ -1,0 +1,20 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div class="container">
+    <h3 class="text-center">AGREGAR CATEGORIA</h3>
+    <form action="/agregarCategoria/" method="post">
+        {% csrf_token %}
+        <div>
+            <label for="nombre" class="fw-bold">Nombre:</label>
+            <input type="text" name="nombre" id="" class="form-control">
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-secondary">Agregar</button>
+        </div>
+    </form>
+
+</div>
+
+<div class="text-center">{{mensaje}}</div>
+{% endblock%}

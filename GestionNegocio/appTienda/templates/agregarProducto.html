@@ -1,0 +1,40 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div class="container w-50" style="margin: 0 auto">
+    <h3>AGREGAR PELICULA</h3>
+    <form action="/agregarProducto/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-2">
+            <label for="txtCodigo" class="fw-bold">Código:</label>
+            <input type="text" name="txtCodigo" id="" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="txtNombre" class="fw-bold">Nombre:</label>
+            <input type="text" name="txtNombre" id="" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="txtPrecio" class="fw-bold">Precio:</label>
+            <input type="text" name="txtPrecio" id="" class="form-control">
+        </div>
+        <div class="mb-2">
+            <label for="cbCategoria" class="fw-bold">Categoria:</label>
+            <select name="cbCategoria" id="" class="form-select">
+                <option value="">Seleccione</option>
+                {%for c in categoria%}
+                    <option value="{{c.pk}}">{{c.catNombre}}</option>
+                {%endfor%}
+            </select>
+        </div>
+        <div class="mb-2">
+            <label for="fileFoto" class="fw-bold">Foto:</label>
+            <input type="file" name="fileFoto" id="">
+        </div>
+        <div class="mb-2">
+            <button class="btn btn-secondary">Agregar</button>
+        </div>
+    </form>
+
+</div>
+
+<div>{{mensaje}}</div>
+{% endblock%}

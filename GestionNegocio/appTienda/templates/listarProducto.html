@@ -1,0 +1,38 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div class="container">
+    <div style="margin: 0 auto">
+        <H3 class="text-center">LISTADO DE PRODUCTO</H3>
+        <table class="table table-bordered w-75" style="margin: 0 auto">
+            <thead class="table-secondary">
+                <tr class="text-center fw-bold">
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Categoria</th>
+                    <th>Foto</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in producto%}
+                <tr>
+                    <td>{{p.proCodigo}}</td>
+                    <td>{{p.proNombre}}</td>
+                    <td>{{p.proPrecio}}</td>
+                    <td class="text-center">
+                        <img src="../media/{{p.proFoto}}" alt="" width="50" height="50">
+                    </td>
+                    <td>{{p.proCategoria.catNombre}}</td>
+                    <td class="text-center">
+                        <a href="/consultarProducto/{{p.pk}}/"> <i class="fa fa-edit text-warning"
+                                title="editar"></i></a>
+                        <i class="fa fa-trash text-danger" title="eliminar"
+                            onclick="eliminarProducto('{{p.pk}}')"></i>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock%}

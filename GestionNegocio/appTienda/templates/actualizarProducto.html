@@ -1,0 +1,46 @@
+{% extends "index.html"%}
+{%block contenido%}
+<div class="container w-50">
+    <h3 class="text-center">ACTUALIZAR PRODUCTO</h3>
+    <form action="/actualizarProducto/" method="post" enctype="multipart/form-data" style="margin:0 auto">
+        {% csrf_token %}
+        <div class="mt-3">
+            <label for="txtCodigo" class="fw-bold">Código:</label>
+            <input type="text" name="txtCodigo" id="" class="form-control" value="{{producto.proCodigo}}">
+        </div>
+        <div class="mt-3">
+            <label for="txtNombre" class="fw-bold">Nombre:</label>
+            <input type="text" name="txtNombre" id="" class="form-control" value="{{producto.proNombre}}">
+        </div>
+        <div class="mt-3">
+            <label for="txtPrecio" class="fw-bold">Precio:</label>
+            <input type="text" name="txtPrecio" id="" class="form-control"
+                value="{{producto.proPrecio}}">
+        </div>
+        <div class="mt-3">
+            <label for="cbCategoria" class="fw-bold">Categoria:</label>
+            <select name="cbCategoria" id="" class="form-select">
+                <option value="">Seleccione</option>
+                {%for c in categoria%}
+                {% if c.pk == producto.proCategoria.pk %}
+                <option value="{{g.pk}}" selected>{{c.catNombre}}</option>
+                {%else%}
+                <option value="{{g.pk}}">{{c.catNombre}}</option>
+                {%endif%}
+                {%endfor%}
+            </select>
+        </div>
+        <div class="mt-3">
+            <label for="fileFoto" class="fw-bold">Foto:</label>
+            <input type="file" name="fileFoto" id="">
+        </div>
+        <div class="mt-3">
+            <button class="btn btn-secondary">Actualizar</button>
+        </div>
+        <input type="hidden" name="idProducto" value="{{producto.pk}}">
+    </form>
+
+</div>
+
+<div>{{mensaje}}</div>
+{% endblock%}
