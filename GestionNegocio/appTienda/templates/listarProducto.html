@@ -1,5 +1,12 @@
 {% extends "index.html"%}
 {%block contenido%}
+<div class="pt-4" style="font-family: cursive; align-items: center; display: flex; flex-direction: column;">
+    <a href="/vistaAgregarProducto/">
+        <button class="btn btn-outline-info">Agregar</button>
+    </a>
+</div>
+{% load static%}
+<script src="{% static '../static/app.js'%}"></script>
 <div class="container">
     <div style="margin: 0 auto">
         <H3 class="text-center">LISTADO DE PRODUCTO</H3>
@@ -11,10 +18,11 @@
                     <th>Precio</th>
                     <th>Categoria</th>
                     <th>Foto</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                {% for p in producto%}
+                {% for p in productos%}
                 <tr>
                     <td>{{p.proCodigo}}</td>
                     <td>{{p.proNombre}}</td>
@@ -24,10 +32,8 @@
                     </td>
                     <td>{{p.proCategoria.catNombre}}</td>
                     <td class="text-center">
-                        <a href="/consultarProducto/{{p.pk}}/"> <i class="fa fa-edit text-warning"
-                                title="editar"></i></a>
-                        <i class="fa fa-trash text-danger" title="eliminar"
-                            onclick="eliminarProducto('{{p.pk}}')"></i>
+                        <a href="/consultarProductoPorId/{{p.pk}}/"><ion-icon name="create"></ion-icon></a>
+                        <ion-icon name="trash" onclick="eliminarProducto('{{p.pk}}')">Eliminar</ion-icon>                            
                     </td>
                 </tr>
                 {% endfor %}

@@ -22,7 +22,7 @@
             <select name="cbCategoria" id="" class="form-select">
                 <option value="">Seleccione</option>
                 {%for c in categoria%}
-                {% if c.pk == producto.proCategoria.pk %}
+                {% if c.id == producto.proCategoria.pk %}
                 <option value="{{g.pk}}" selected>{{c.catNombre}}</option>
                 {%else%}
                 <option value="{{g.pk}}">{{c.catNombre}}</option>

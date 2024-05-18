@@ -29,7 +29,7 @@ urlpatterns = [
     path('agregarProducto/',views.agregarProducto),
     path('listarProducto/',views.listarProducto),
     path('consultarProductoPorId/<str:id>/',views.consultarProductoPorId),
-    path('actualizarProducto/',views.actualizarPelicula),
+    path('actualizarProducto/',views.actualizarProducto),
     path('eliminarProducto/<str:id>/',views.eliminarProducto),
 ]
 if settings.DEBUG:

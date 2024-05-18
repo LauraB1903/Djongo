@@ -28,7 +28,7 @@ def agregarCategoria(request):
 
 def listarProducto(request):
     productos = Producto.objects.all()
-    retorno = {"productos": productos}
+    retorno = {"productos": (productos)}
     return render(request, "listarProducto.html", retorno)
 
 
@@ -65,11 +65,11 @@ def consultarProductoPorId(request, id):
     producto = Producto.objects.get(pk=ObjectId(id))
     categoria = Categoria.objects.all()
     # retornamos los generos porque se necesitan en la interfaz
-    retorno = {"producto": producto, "categotia": categoria}
+    retorno = {"producto": producto, "categoria": categoria}
     return render(request, "actualizarProducto.html", retorno)
 
 
-def actualizarPelicula(request):
+def actualizarProducto(request):
     try:
         idProducto = ObjectId(request.POST['idProducto'])
         # obtener la pelicula a partir de su id
@@ -94,7 +94,7 @@ def actualizarPelicula(request):
             # actualizamos con la nueva foto
             productoActualizar.proFoto = foto
 
-        # actualizar la pelicula en la base de datos
+        # actualizar el producto en la base de datos
         productoActualizar.save()
         mensaje = "Producto Actualizada"
     except Error as error:
